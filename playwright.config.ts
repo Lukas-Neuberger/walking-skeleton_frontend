@@ -1,11 +1,11 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: './e2e/tests',
   use: {
-    headless: true, // Falls du die UI sehen willst, setze auf false
+    headless: true,
     baseURL: 'http://localhost:4200',
-    browserName: 'chromium', // Alternativ: 'firefox' oder 'webkit'
+    browserName: 'chromium',
     viewport: { width: 1280, height: 720 },
   },
 });
