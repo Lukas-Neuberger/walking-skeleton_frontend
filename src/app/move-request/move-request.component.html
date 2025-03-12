@@ -1,1 +1,29 @@
-<p>move-request works!</p>
+<div class="move-request">
+    <h2>Create Move Request</h2>
+
+    <form [formGroup]="moveRequestForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="name">Name:</label>
+            <input id="name" formControlName="name" />
+        </div>
+
+        <div>
+            <label for="oldAddress">Old Address:</label>
+            <input id="oldAddress" formControlName="oldAddress" />
+        </div>
+
+        <div>
+            <label for="newAddress">New Address:</label>
+            <input id="newAddress" formControlName="newAddress" />
+        </div>
+
+        <div>
+            <label for="date">Moving Date:</label>
+            <input id="date" type="date" formControlName="date" />
+        </div>
+
+        <button type="submit" [disabled]="moveRequestForm.invalid">Submit</button>
+    </form>
+    <button routerLink="/" class="home-button">Back to Home</button>
+</div>
+
