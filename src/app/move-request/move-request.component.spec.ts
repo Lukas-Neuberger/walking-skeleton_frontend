@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MoveRequestComponent } from './move-request.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('MoveRequestComponent', () => {
   let component: MoveRequestComponent;
@@ -9,7 +10,13 @@ describe('MoveRequestComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, MoveRequestComponent] // Stellt sicher, dass Formulare funktionieren
+      imports: [ReactiveFormsModule, MoveRequestComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: { params: of({}) } // 🔹 Mock für ActivatedRoute
+        }
+      ]
     }).compileComponents();
   });
 
@@ -23,7 +30,7 @@ describe('MoveRequestComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a form with name, address, and date fields', () => {
+  it('should have a form with name, oldAddress, newAddress, and date fields', () => {
     expect(component.moveRequestForm.contains('name')).toBeTrue();
     expect(component.moveRequestForm.contains('newAddress')).toBeTrue();
     expect(component.moveRequestForm.contains('oldAddress')).toBeTrue();
