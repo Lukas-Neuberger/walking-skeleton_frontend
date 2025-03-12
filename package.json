@@ -7,6 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "e2e": "npx playwright test",
+    "e2e:headed": "npx playwright test --headed",
+    "e2e:playwright": "npx playwright install --with-deps",
     "serve:ssr:walking-skeleton_frontend": "node dist/walking-skeleton_frontend/server/server.mjs"
   },
   "private": true,
