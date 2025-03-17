@@ -25,10 +25,10 @@
         <button type="submit" [disabled]="moveRequestForm.invalid">Submit</button>
     </form>
 
-    <!-- Erfolgsnachricht anzeigen, wenn Move Request erfolgreich ist -->
     <div *ngIf="submittedMoveRequest" class="success-message">
         <h3>Move request successfully created!</h3>
     </div>
+
 
     <button routerLink="/" class="home-button">Back to Home</button>
 </div>
