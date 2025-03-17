@@ -9,14 +9,12 @@ test('should create a move request', async ({ page }) => {
   await page.fill('#newAddress', '123 Main St');
   await page.fill('#date', '2025-04-01');
 
+  // Event-Handler für das `alert()`-Popup setzen
+  page.once('dialog', async (dialog) => {
+    expect(dialog.message()).toContain('Move request successfully created!');
+    await dialog.accept(); // Schließt das Alert-Fenster
+  });
+
   // Formular absenden
   await page.click('button[type=submit]');
-
-  // Warten, bis Angular DOM aktualisiert
-  await page.waitForTimeout(500);
-
-  // Erfolgsmeldung prüfen
-  const successMessage = page.locator('.success-message');
-  await expect(successMessage).toBeVisible({ timeout: 5000 });
-  await expect(successMessage).toHaveText(/Move request successfully created!/i);
 });
