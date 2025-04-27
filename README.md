@@ -57,3 +57,32 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Code Quality & Developer Tools
+
+### Linting & Formatting
+- **ESLint** for static code analysis
+- **Prettier** for code formatting 
+- **Lint**:
+  ```bash
+  npm run lint
+### Git Hooks with Husky & lint-staged
+- **Husky** to run Git hooks
+- **lint-staged** to lint only staged files
+
+**Initialization** (run in the terminal):
+```bash
+npm install
+npx husky install
+npx husky add .husky/pre-commit "npx lint-staged"
+```
+### Continuous Integration
+
+In the GitHub Actions pipeline, after installing dependencies, add:
+```yaml
+- name: Lint
+  run: npm run lint
+
+- name: Format Check
+  run: npm run format:check
+```

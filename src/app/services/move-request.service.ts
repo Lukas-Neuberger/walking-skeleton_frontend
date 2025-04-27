@@ -11,7 +11,7 @@ interface MoveRequest {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MoveRequestService {
   private apiUrl = 'http://localhost:8080/api/move-requests';
