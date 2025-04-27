@@ -14,9 +14,9 @@ describe('MoveRequestComponent', () => {
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: { params: of({}) } // 🔹 Mock für ActivatedRoute
-        }
-      ]
+          useValue: { params: of({}) }, // 🔹 Mock für ActivatedRoute
+        },
+      ],
     }).compileComponents();
   });
 
@@ -36,7 +36,11 @@ describe('MoveRequestComponent', () => {
     expect(component.moveRequestForm.contains('oldAddress')).toBeTrue();
     expect(component.moveRequestForm.contains('date')).toBeTrue();
   });
-
+  function tomorrow(): string {
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return d.toISOString().split('T')[0];
+  }
   it('should require all fields', () => {
     const form = component.moveRequestForm;
     expect(form.valid).toBeFalse();
@@ -50,7 +54,7 @@ describe('MoveRequestComponent', () => {
     form.controls['oldAddress'].setValue('45 Main St');
     expect(form.valid).toBeFalse();
 
-    form.controls['date'].setValue('2025-04-01');
+    form.controls['date'].setValue(tomorrow());
     expect(form.valid).toBeTrue();
   });
 });

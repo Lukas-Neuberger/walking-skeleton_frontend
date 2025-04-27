@@ -11,8 +11,8 @@ describe('HomeComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HomeComponent], // ✅ Standalone-Komponente hier importieren
       providers: [
-        { provide: ActivatedRoute, useValue: { params: of({}) } } // ✅ Mock für ActivatedRoute
-      ]
+        { provide: ActivatedRoute, useValue: { params: of({}) } }, // ✅ Mock für ActivatedRoute
+      ],
     }).compileComponents();
   });
 
